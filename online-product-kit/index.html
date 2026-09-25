@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ГЭДК - варианты комплектов онлайн-продукта</title>
+  <style>
+    :root{--nav:#073b64;--nav2:#052f51;--ink:#172b4d;--muted:#6b778c;--line:#dfe1e6;--page:#f4f5f7;--blue:#0c66e4;--blue2:#e9f2ff;--green:#216e4e;--green2:#dcfff1;--red:#ae2e24;--red2:#ffebe6;--amber:#974f0c;--amber2:#fff7d6;--shadow:0 2px 10px rgba(9,30,66,.12)}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--page);font:14px/1.4 Arial,sans-serif}button,input,select,textarea{font:inherit;color:inherit}
+    .topbar{height:54px;background:linear-gradient(90deg,var(--nav),var(--nav2));color:#fff;display:flex;align-items:center;padding:0 24px;gap:28px;box-shadow:0 1px 3px rgba(9,30,66,.3)}
+    .brand{font-size:20px;font-weight:700;display:flex;gap:9px;align-items:center}.brand-mark{width:27px;height:27px;border:2px solid #fff;border-radius:5px;display:grid;place-items:center}.nav{display:flex;gap:24px;font-size:13px}.nav span{opacity:.86}.nav .active{opacity:1;font-weight:700}.grow{flex:1}.user{width:30px;height:30px;border:1px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center}
+    .layout{display:grid;grid-template-columns:250px 1fr;min-height:calc(100vh - 54px)}.sidebar{background:#fff;border-right:1px solid var(--line);padding:22px 14px}.side-title{font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:700;padding:0 10px 8px}.side-item{padding:10px;border-radius:5px;margin:2px 0}.side-item.active{background:var(--blue2);color:#0747a6;font-weight:700}.content{padding:24px;min-width:0}.breadcrumbs{font-size:12px;color:var(--muted);margin-bottom:8px}.page-head{display:flex;align-items:flex-start;gap:18px;margin-bottom:20px}.page-head h1{font-size:24px;margin:0 0 4px}.page-head p{margin:0;color:var(--muted)}.head-actions{margin-left:auto;display:flex;gap:8px}
+    button{border:1px solid #b7bec8;background:#fff;border-radius:5px;padding:8px 12px;font-weight:600;cursor:pointer}button:hover{background:#f1f2f4}button.primary{color:#fff;background:var(--blue);border-color:var(--blue)}button.primary:hover{background:#0055b8}button.danger{color:var(--red);border-color:#e6a4a0}button.icon{padding:6px 9px}button:disabled{opacity:.45;cursor:not-allowed}
+    .product-card{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}.tabs{display:flex;border-bottom:1px solid var(--line);padding:0 20px;gap:24px}.tab{border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;padding:15px 2px}.tab.active{color:var(--blue);border-bottom-color:var(--blue)}.panel{padding:20px}.product-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px;margin-bottom:18px}.field label{display:block;font-size:12px;font-weight:700;margin:0 0 5px}.req{color:var(--red)}input,select,textarea{width:100%;border:1px solid #aeb6c1;border-radius:4px;background:#fff;padding:8px 9px;min-height:36px}input:focus,select:focus,textarea:focus{outline:2px solid #85b8ff;border-color:var(--blue)}input[readonly]{background:#f4f5f7;color:var(--muted)}
+    .section-head{display:flex;align-items:center;gap:12px;margin:22px 0 12px}.section-head h2{font-size:18px;margin:0}.section-head p{margin:0;color:var(--muted)}.section-head button{margin-left:auto}.logic-hint{background:var(--blue2);border-left:4px solid var(--blue);border-radius:4px;padding:10px 12px;margin-bottom:14px;display:flex;gap:10px;align-items:center}.logic-chip{font-weight:700;background:#fff;color:#0747a6;border:1px solid #85b8ff;border-radius:13px;padding:2px 8px}
+    #variants{display:grid;gap:0}.variant{border:1px solid #b8c2cc;border-radius:8px;background:#fff;box-shadow:0 1px 3px rgba(9,30,66,.08);overflow:hidden}.variant.error{border:2px solid var(--red)}.variant-head{display:flex;align-items:center;padding:12px 14px;background:#f7f8f9;border-bottom:1px solid var(--line);gap:10px}.variant-number{font-size:16px;font-weight:700}.badge{font-size:11px;text-transform:uppercase;font-weight:700;letter-spacing:.3px;border-radius:12px;padding:3px 8px;background:var(--blue2);color:#0747a6}.badge.alt{background:#f1f2f4;color:#44546f}.variant-note{color:var(--muted);font-size:12px}.variant-actions{margin-left:auto;display:flex;gap:6px}.doc-table{width:100%;border-collapse:collapse}.doc-table th{font-size:11px;text-align:left;text-transform:uppercase;color:var(--muted);background:#fff;border-bottom:1px solid var(--line);padding:9px}.doc-table td{padding:8px 5px;vertical-align:top;border-bottom:1px solid #eef0f2}.doc-table th:first-child,.doc-table td:first-child{padding-left:12px}.doc-table th:last-child,.doc-table td:last-child{padding-right:12px}.doc-table select,.doc-table input{min-width:120px}.doc-index{width:32px;text-align:center;color:var(--muted);padding-top:17px!important}.row-action{width:44px}.and-row td{text-align:center;padding:4px!important;background:#fafbfc;border-bottom:0}.and-pill,.or-pill{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:11px;color:#44546f}.and-pill:before,.and-pill:after,.or-pill:before,.or-pill:after{content:"";display:block;width:70px;height:1px;background:#c1c7d0}.variant-footer{padding:10px 12px;background:#fafbfc}.add-doc{color:var(--blue);border-color:#85b8ff;background:#fff}.or-divider{height:44px;display:flex;align-items:center;justify-content:center}.or-pill{color:var(--amber);background:var(--amber2);border-radius:16px;padding:4px 10px}.or-pill:before,.or-pill:after{width:110px;background:#e2b203}
+    .expression{margin-top:18px;padding:13px 14px;background:#f7f8f9;border:1px dashed #aeb6c1;border-radius:6px}.expression strong{display:block;font-size:12px;margin-bottom:5px}.expression-text{font-family:Arial,sans-serif;color:#344563;line-height:1.7}.expression-text b{color:#0747a6}.help{font-size:12px;color:var(--muted);margin-top:6px}.footer-actions{position:sticky;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);margin:22px -20px -20px;padding:13px 20px;display:flex;justify-content:flex-end;gap:8px;backdrop-filter:blur(4px)}
+    .toast{position:fixed;right:24px;bottom:24px;background:#fff;border-left:5px solid var(--green);box-shadow:0 8px 24px rgba(9,30,66,.24);border-radius:6px;padding:14px 42px 14px 16px;min-width:310px;z-index:10}.toast strong{display:block;color:var(--green)}.toast button{position:absolute;right:5px;top:5px;border:0;padding:4px 8px}.hidden{display:none!important}.error-message{color:var(--red);background:var(--red2);padding:8px 10px;border-radius:4px;margin:8px 12px 0;font-size:12px}.demo-banner{background:#fff7d6;color:#5f3811;border-bottom:1px solid #e2b203;text-align:center;padding:7px;font-size:12px}
+    dialog{border:0;border-radius:8px;box-shadow:0 18px 60px rgba(9,30,66,.35);max-width:480px;padding:0}dialog::backdrop{background:rgba(9,30,66,.48)}.dialog-head{padding:18px 20px 10px}.dialog-head h2{margin:0 0 5px;font-size:19px}.dialog-body{padding:0 20px 15px;color:#44546f}.dialog-actions{border-top:1px solid var(--line);padding:12px 20px;display:flex;justify-content:flex-end;gap:8px}
+    @media(max-width:1000px){.layout{grid-template-columns:1fr}.sidebar{display:none}.product-grid{grid-template-columns:1fr 1fr}.doc-table{display:block;overflow-x:auto}}@media(max-width:660px){.nav{display:none}.content{padding:14px}.page-head{display:block}.head-actions{margin-top:12px}.product-grid{grid-template-columns:1fr}.tabs{overflow-x:auto}.variant-head{flex-wrap:wrap}.variant-actions{width:100%;margin-left:0}.or-pill:before,.or-pill:after{width:42px}}
+  </style>
+</head>
+<body>
+  <div class="demo-banner">Интерактивный прототип. Изменения не записываются в ГЭДК.</div>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">Г</span>ГЭДК</div>
+    <nav class="nav" aria-label="Основное меню"><span>Поиск</span><span class="active">Справочники</span><span>Отчеты</span><span>Администрирование</span></nav>
+    <span class="grow"></span><span>?</span><span class="user">АК</span>
+  </header>
+  <div class="layout">
+    <aside class="sidebar"><div class="side-title">Справочники</div><div class="side-item">Виды досье</div><div class="side-item">Виды документов</div><div class="side-item">Настройка импорта</div><div class="side-item active">Онлайн-продукты</div><div class="side-item">Пользователи</div></aside>
+    <main class="content">
+      <div class="breadcrumbs">Справочники / Онлайн-продукты / Редактирование</div>
+      <div class="page-head">
+        <div><h1>Онлайн-продукт</h1><p>Настройка полного состава документов для каждого способа оформления</p></div>
+        <div class="head-actions"><button type="button" id="reset">Сбросить пример</button><button type="button" class="primary" id="topSave">Сохранить</button></div>
+      </div>
+      <section class="product-card">
+        <div class="tabs" role="tablist"><button class="tab" type="button">Детали продукта</button><button class="tab active" type="button" aria-selected="true">Комплекты документов</button><button class="tab" type="button">Пользователи</button></div>
+        <div class="panel">
+          <div class="product-grid">
+            <div class="field"><label for="product">Наименование онлайн-продукта <span class="req">*</span></label><select id="product"><option>Открытие текущего счета и выпуск БПК</option><option>Выпуск банковской платежной карточки онлайн</option><option>Открытие текущего счета онлайн</option></select></div>
+            <div class="field"><label for="productCode">Обозначение в УОС <span class="req">*</span></label><input id="productCode" value="ACCOUNT_CARD_ONLINE"></div>
+            <div class="field"><label for="status">Статус</label><select id="status"><option>Действует</option><option>Не действует</option></select></div>
+          </div>
+          <div class="logic-hint"><span class="logic-chip">Автоматически</span><span>Все документы внутри варианта обязательны совместно. Для успешной проверки достаточно одного полного варианта.</span></div>
+          <div class="section-head"><div><h2>Варианты комплекта</h2><p>Вариант 1 является основным. Остальные варианты являются альтернативными.</p></div><button type="button" class="primary" id="addVariant">+ Добавить вариант</button></div>
+          <div id="variants"></div>
+          <div class="expression"><strong>Логика проверки</strong><div class="expression-text" id="expression"></div><div class="help">Операторы формируются автоматически и недоступны для изменения.</div></div>
+          <div class="footer-actions"><button type="button" id="cancel">Отмена</button><button type="button" class="primary" id="save">Сохранить настройки</button></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <dialog id="deleteDialog"><div class="dialog-head"><h2>Удалить вариант?</h2></div><div class="dialog-body"><p id="deleteText"></p><p>Оставшиеся варианты будут перенумерованы без пропусков.</p></div><div class="dialog-actions"><button type="button" id="keepVariant">Отмена</button><button type="button" class="danger" id="confirmDelete">Удалить</button></div></dialog>
+  <div class="toast hidden" id="toast" role="status"><button type="button" id="closeToast" aria-label="Закрыть">×</button><strong id="toastTitle">Настройки сохранены</strong><span id="toastText">Новые запуски проверки будут использовать текущие варианты.</span></div>
+  <script>
+  (()=>{
+    "use strict";
+    const dossierOptions=["Текущий счет","БПК"];
+    const docOptions=["Договор на открытие счета","Чек","Заявление на выпуск БПК и открытие счета","Заявление на получение БПК","Открытие счета с выдачей БПК"];
+    const subtypeMap={"Договор на открытие счета":"1","Чек":"2","Заявление на выпуск БПК и открытие счета":"1","Заявление на получение БПК":"2","Открытие счета с выдачей БПК":"3"};
+    const initial=()=>[
+      {docs:[{dossier:"Текущий счет",doc:"Договор на открытие счета",subtype:"1",attrs:"product_code:{CB}"},{dossier:"Текущий счет",doc:"Чек",subtype:"2",attrs:"product_code:{CB}"}]},
+      {docs:[{dossier:"БПК",doc:"Заявление на выпуск БПК и открытие счета",subtype:"1",attrs:"product_code:{CARD}"},{dossier:"Текущий счет",doc:"Чек",subtype:"2",attrs:"product_code:{CB}"}]}
+    ];
+    let variants=initial(),pendingDelete=null,toastTimer=null;
+    const el=id=>document.getElementById(id);
+    const escape=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+    const opts=(items,value)=>items.map(x=>`<option${x===value?" selected":""}>${escape(x)}</option>`).join("");
+    function render(){
+      el("variants").innerHTML=variants.map((variant,vIndex)=>{
+        const rows=variant.docs.map((d,dIndex)=>`${dIndex?`<tr class="and-row"><td colspan="6"><span class="and-pill">И</span></td></tr>`:""}<tr class="doc-row">
+          <td class="doc-index">${dIndex+1}</td>
+          <td><select aria-label="Вид досье" data-field="dossier" data-v="${vIndex}" data-d="${dIndex}">${opts(dossierOptions,d.dossier)}</select></td>
+          <td><select aria-label="Вид документа" data-field="doc" data-v="${vIndex}" data-d="${dIndex}">${opts(docOptions,d.doc)}</select></td>
+          <td><input aria-label="Подвид документа" data-field="subtype" data-v="${vIndex}" data-d="${dIndex}" value="${escape(d.subtype)}"></td>
+          <td><input aria-label="Атрибуты связки" data-field="attrs" data-v="${vIndex}" data-d="${dIndex}" value="${escape(d.attrs)}"></td>
+          <td class="row-action"><button type="button" class="icon danger remove-doc" data-v="${vIndex}" data-d="${dIndex}" aria-label="Удалить документ">×</button></td>
+        </tr>`).join("");
+        return `${vIndex?`<div class="or-divider"><span class="or-pill">ИЛИ</span></div>`:""}<article class="variant" data-variant="${vIndex}">
+          <div class="variant-head"><span class="variant-number">Вариант ${vIndex+1}</span><span class="badge${vIndex?" alt":""}">${vIndex?"Альтернативный":"Основной"}</span><span class="variant-note">${variant.docs.length} ${variant.docs.length===1?"документ":"документа"}</span><div class="variant-actions"><button type="button" class="danger remove-variant" data-v="${vIndex}" ${variants.length===1?"disabled":""}>Удалить вариант</button></div></div>
+          <div class="error-message hidden">Добавьте хотя бы один полностью заполненный документ.</div>
+          <table class="doc-table"><thead><tr><th>№</th><th>Вид досье</th><th>Вид документа</th><th>Подвид</th><th>Атрибуты связки</th><th></th></tr></thead><tbody>${rows||`<tr><td colspan="6" class="help" style="padding:16px">В варианте пока нет документов.</td></tr>`}</tbody></table>
+          <div class="variant-footer"><button type="button" class="add-doc" data-v="${vIndex}">+ Добавить документ</button></div>
+        </article>`;
+      }).join("");
+      el("expression").innerHTML=variants.map((v,i)=>`<b>(</b>${v.docs.length?v.docs.map(d=>escape(d.doc)).join(" <b>И</b> "):"документы не добавлены"}<b>)</b>`).join(" <b>ИЛИ</b> ");
+      bindDynamic();
+    }
+    function bindDynamic(){
+      document.querySelectorAll("[data-field]").forEach(control=>control.addEventListener("change",()=>{
+        const v=Number(control.dataset.v),d=Number(control.dataset.d),field=control.dataset.field;
+        variants[v].docs[d][field]=control.value;
+        if(field==="doc"){variants[v].docs[d].subtype=subtypeMap[control.value]||"";render();}else updateExpression();
+      }));
+      document.querySelectorAll(".add-doc").forEach(button=>button.addEventListener("click",()=>{variants[Number(button.dataset.v)].docs.push({dossier:"Текущий счет",doc:"Чек",subtype:"2",attrs:"product_code:{}"});render();}));
+      document.querySelectorAll(".remove-doc").forEach(button=>button.addEventListener("click",()=>{variants[Number(button.dataset.v)].docs.splice(Number(button.dataset.d),1);render();}));
+      document.querySelectorAll(".remove-variant").forEach(button=>button.addEventListener("click",()=>openDelete(Number(button.dataset.v))));
+    }
+    function updateExpression(){el("expression").innerHTML=variants.map(v=>`<b>(</b>${v.docs.length?v.docs.map(d=>escape(d.doc)).join(" <b>И</b> "):"документы не добавлены"}<b>)</b>`).join(" <b>ИЛИ</b> ");}
+    function openDelete(index){if(variants.length===1)return;pendingDelete=index;el("deleteText").textContent=`Будет удален вариант ${index+1} со всеми входящими документами.`;el("deleteDialog").showModal();}
+    function validate(){let ok=true;document.querySelectorAll(".variant").forEach(x=>{x.classList.remove("error");x.querySelector(".error-message").classList.add("hidden")});variants.forEach((v,i)=>{const valid=v.docs.length>0&&v.docs.every(d=>d.dossier&&d.doc&&d.subtype.trim()&&d.attrs.trim());if(!valid){ok=false;const card=document.querySelector(`[data-variant="${i}"]`);card.classList.add("error");card.querySelector(".error-message").classList.remove("hidden");}});return ok;}
+    function showToast(ok=true){clearTimeout(toastTimer);el("toastTitle").textContent=ok?"Настройки сохранены":"Настройка не сохранена";el("toastText").textContent=ok?"Новые и повторные запуски будут использовать текущие варианты.":"Заполните документы в отмеченных вариантах.";el("toast").style.borderLeftColor=ok?"var(--green)":"var(--red)";el("toastTitle").style.color=ok?"var(--green)":"var(--red)";el("toast").classList.remove("hidden");toastTimer=setTimeout(()=>el("toast").classList.add("hidden"),5000);}
+    function save(){const ok=validate();showToast(ok);if(!ok)document.querySelector(".variant.error").scrollIntoView({behavior:"smooth",block:"center"});}
+    el("addVariant").addEventListener("click",()=>{variants.push({docs:[{dossier:"Текущий счет",doc:"Чек",subtype:"2",attrs:"product_code:{}"}]});render();document.querySelector(`[data-variant="${variants.length-1}"]`).scrollIntoView({behavior:"smooth",block:"center"});});
+    el("keepVariant").addEventListener("click",()=>{pendingDelete=null;el("deleteDialog").close()});
+    el("confirmDelete").addEventListener("click",()=>{if(pendingDelete!==null&&variants.length>1)variants.splice(pendingDelete,1);pendingDelete=null;el("deleteDialog").close();render();showToast(true);el("toastTitle").textContent="Вариант удален";el("toastText").textContent="Оставшиеся варианты перенумерованы без пропусков.";});
+    el("deleteDialog").addEventListener("cancel",()=>{pendingDelete=null});
+    el("save").addEventListener("click",save);el("topSave").addEventListener("click",save);
+    el("closeToast").addEventListener("click",()=>el("toast").classList.add("hidden"));
+    el("reset").addEventListener("click",()=>{variants=initial();render();showToast(true);el("toastTitle").textContent="Пример восстановлен";el("toastText").textContent="Возвращены два исходных варианта.";});
+    el("cancel").addEventListener("click",()=>{variants=initial();render();});
+    render();
+  })();
+  </script>
+</body>
+</html>
