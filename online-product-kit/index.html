@@ -3,116 +3,165 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ГЭДК - варианты комплектов онлайн-продукта</title>
+  <title>Онлайн-продукты - ГЭДК</title>
   <style>
-    :root{--nav:#073b64;--nav2:#052f51;--ink:#172b4d;--muted:#6b778c;--line:#dfe1e6;--page:#f4f5f7;--blue:#0c66e4;--blue2:#e9f2ff;--green:#216e4e;--green2:#dcfff1;--red:#ae2e24;--red2:#ffebe6;--amber:#974f0c;--amber2:#fff7d6;--shadow:0 2px 10px rgba(9,30,66,.12)}
-    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--page);font:14px/1.4 Arial,sans-serif}button,input,select,textarea{font:inherit;color:inherit}
-    .topbar{height:54px;background:linear-gradient(90deg,var(--nav),var(--nav2));color:#fff;display:flex;align-items:center;padding:0 24px;gap:28px;box-shadow:0 1px 3px rgba(9,30,66,.3)}
-    .brand{font-size:20px;font-weight:700;display:flex;gap:9px;align-items:center}.brand-mark{width:27px;height:27px;border:2px solid #fff;border-radius:5px;display:grid;place-items:center}.nav{display:flex;gap:24px;font-size:13px}.nav span{opacity:.86}.nav .active{opacity:1;font-weight:700}.grow{flex:1}.user{width:30px;height:30px;border:1px solid rgba(255,255,255,.5);border-radius:50%;display:grid;place-items:center}
-    .layout{display:grid;grid-template-columns:250px 1fr;min-height:calc(100vh - 54px)}.sidebar{background:#fff;border-right:1px solid var(--line);padding:22px 14px}.side-title{font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:700;padding:0 10px 8px}.side-item{padding:10px;border-radius:5px;margin:2px 0}.side-item.active{background:var(--blue2);color:#0747a6;font-weight:700}.content{padding:24px;min-width:0}.breadcrumbs{font-size:12px;color:var(--muted);margin-bottom:8px}.page-head{display:flex;align-items:flex-start;gap:18px;margin-bottom:20px}.page-head h1{font-size:24px;margin:0 0 4px}.page-head p{margin:0;color:var(--muted)}.head-actions{margin-left:auto;display:flex;gap:8px}
-    button{border:1px solid #b7bec8;background:#fff;border-radius:5px;padding:8px 12px;font-weight:600;cursor:pointer}button:hover{background:#f1f2f4}button.primary{color:#fff;background:var(--blue);border-color:var(--blue)}button.primary:hover{background:#0055b8}button.danger{color:var(--red);border-color:#e6a4a0}button.icon{padding:6px 9px}button:disabled{opacity:.45;cursor:not-allowed}
-    .product-card{background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}.tabs{display:flex;border-bottom:1px solid var(--line);padding:0 20px;gap:24px}.tab{border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;padding:15px 2px}.tab.active{color:var(--blue);border-bottom-color:var(--blue)}.panel{padding:20px}.product-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px;margin-bottom:18px}.field label{display:block;font-size:12px;font-weight:700;margin:0 0 5px}.req{color:var(--red)}input,select,textarea{width:100%;border:1px solid #aeb6c1;border-radius:4px;background:#fff;padding:8px 9px;min-height:36px}input:focus,select:focus,textarea:focus{outline:2px solid #85b8ff;border-color:var(--blue)}input[readonly]{background:#f4f5f7;color:var(--muted)}
-    .section-head{display:flex;align-items:center;gap:12px;margin:22px 0 12px}.section-head h2{font-size:18px;margin:0}.section-head p{margin:0;color:var(--muted)}.section-head button{margin-left:auto}.logic-hint{background:var(--blue2);border-left:4px solid var(--blue);border-radius:4px;padding:10px 12px;margin-bottom:14px;display:flex;gap:10px;align-items:center}.logic-chip{font-weight:700;background:#fff;color:#0747a6;border:1px solid #85b8ff;border-radius:13px;padding:2px 8px}
-    #variants{display:grid;gap:0}.variant{border:1px solid #b8c2cc;border-radius:8px;background:#fff;box-shadow:0 1px 3px rgba(9,30,66,.08);overflow:hidden}.variant.error{border:2px solid var(--red)}.variant-head{display:flex;align-items:center;padding:12px 14px;background:#f7f8f9;border-bottom:1px solid var(--line);gap:10px}.variant-number{font-size:16px;font-weight:700}.badge{font-size:11px;text-transform:uppercase;font-weight:700;letter-spacing:.3px;border-radius:12px;padding:3px 8px;background:var(--blue2);color:#0747a6}.badge.alt{background:#f1f2f4;color:#44546f}.variant-note{color:var(--muted);font-size:12px}.variant-actions{margin-left:auto;display:flex;gap:6px}.doc-table{width:100%;border-collapse:collapse}.doc-table th{font-size:11px;text-align:left;text-transform:uppercase;color:var(--muted);background:#fff;border-bottom:1px solid var(--line);padding:9px}.doc-table td{padding:8px 5px;vertical-align:top;border-bottom:1px solid #eef0f2}.doc-table th:first-child,.doc-table td:first-child{padding-left:12px}.doc-table th:last-child,.doc-table td:last-child{padding-right:12px}.doc-table select,.doc-table input{min-width:120px}.doc-index{width:32px;text-align:center;color:var(--muted);padding-top:17px!important}.row-action{width:44px}.and-row td{text-align:center;padding:4px!important;background:#fafbfc;border-bottom:0}.and-pill,.or-pill{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:11px;color:#44546f}.and-pill:before,.and-pill:after,.or-pill:before,.or-pill:after{content:"";display:block;width:70px;height:1px;background:#c1c7d0}.variant-footer{padding:10px 12px;background:#fafbfc}.add-doc{color:var(--blue);border-color:#85b8ff;background:#fff}.or-divider{height:44px;display:flex;align-items:center;justify-content:center}.or-pill{color:var(--amber);background:var(--amber2);border-radius:16px;padding:4px 10px}.or-pill:before,.or-pill:after{width:110px;background:#e2b203}
-    .expression{margin-top:18px;padding:13px 14px;background:#f7f8f9;border:1px dashed #aeb6c1;border-radius:6px}.expression strong{display:block;font-size:12px;margin-bottom:5px}.expression-text{font-family:Arial,sans-serif;color:#344563;line-height:1.7}.expression-text b{color:#0747a6}.help{font-size:12px;color:var(--muted);margin-top:6px}.footer-actions{position:sticky;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);margin:22px -20px -20px;padding:13px 20px;display:flex;justify-content:flex-end;gap:8px;backdrop-filter:blur(4px)}
-    .toast{position:fixed;right:24px;bottom:24px;background:#fff;border-left:5px solid var(--green);box-shadow:0 8px 24px rgba(9,30,66,.24);border-radius:6px;padding:14px 42px 14px 16px;min-width:310px;z-index:10}.toast strong{display:block;color:var(--green)}.toast button{position:absolute;right:5px;top:5px;border:0;padding:4px 8px}.hidden{display:none!important}.error-message{color:var(--red);background:var(--red2);padding:8px 10px;border-radius:4px;margin:8px 12px 0;font-size:12px}.demo-banner{background:#fff7d6;color:#5f3811;border-bottom:1px solid #e2b203;text-align:center;padding:7px;font-size:12px}
-    dialog{border:0;border-radius:8px;box-shadow:0 18px 60px rgba(9,30,66,.35);max-width:480px;padding:0}dialog::backdrop{background:rgba(9,30,66,.48)}.dialog-head{padding:18px 20px 10px}.dialog-head h2{margin:0 0 5px;font-size:19px}.dialog-body{padding:0 20px 15px;color:#44546f}.dialog-actions{border-top:1px solid var(--line);padding:12px 20px;display:flex;justify-content:flex-end;gap:8px}
-    @media(max-width:1000px){.layout{grid-template-columns:1fr}.sidebar{display:none}.product-grid{grid-template-columns:1fr 1fr}.doc-table{display:block;overflow-x:auto}}@media(max-width:660px){.nav{display:none}.content{padding:14px}.page-head{display:block}.head-actions{margin-top:12px}.product-grid{grid-template-columns:1fr}.tabs{overflow-x:auto}.variant-head{flex-wrap:wrap}.variant-actions{width:100%;margin-left:0}.or-pill:before,.or-pill:after{width:42px}}
+    :root{--ink:#414141;--muted:#858585;--line:#d8d8d8;--line2:#ececec;--panel:#a7b5bd;--head:#eef0f1;--selected:#e7e7e7;--blue:#506b7d;--accent:#dcae00;--danger:#b83a36;--bg:#e8edef}
+    *{box-sizing:border-box}html,body{height:100%}body{margin:0;color:var(--ink);font:14px/1.25 Roboto,Arial,sans-serif;background:linear-gradient(135deg,#e7eef0 0,#f7f7f7 42%,#dde7ea 100%);overflow:hidden}
+    button,input,select{font:inherit;color:inherit}.app{height:100vh;display:flex;flex-direction:column;min-width:1000px}.main-nav{height:58px;display:flex;align-items:center;background:rgba(255,255,255,.97);border-bottom:1px solid #d4d9dc;position:relative;overflow:hidden}.main-nav:after{content:"";position:absolute;right:-30px;top:-75px;width:610px;height:180px;opacity:.23;background:repeating-linear-gradient(116deg,transparent 0 42px,#728993 43px 45px),repeating-linear-gradient(18deg,transparent 0 58px,#8fa0a7 59px 61px);transform:skewX(-10deg);pointer-events:none}.logo{height:58px;width:155px;display:flex;align-items:center;gap:9px;padding:0 18px;position:relative;z-index:1;font-size:22px;color:#222}.logo-mark{width:45px;height:31px;border:2px solid #222;border-radius:5px;background:#ffd315;position:relative}.logo-mark:before{content:"";position:absolute;inset:5px 8px;border:2px solid #222;border-radius:50%}.logo-mark:after{content:"";position:absolute;right:-6px;top:8px;width:11px;height:10px;border:2px solid #222;background:#ffd315}.menus{display:flex;align-self:stretch;position:relative;z-index:1}.menu{border:0;border-radius:0;background:transparent;padding:0 16px;font-size:16px;display:flex;align-items:center;gap:8px;cursor:pointer}.menu:hover{background:#eef1f2}.menu.primary{background:#94a6af}.menu-icon{font-size:16px;color:#263238}.caret{font-size:11px;color:#111}.nav-fill{flex:1}.right-tools{height:100%;display:flex;align-items:center;position:relative;z-index:1;margin-right:15px}.right-tools button{height:100%;min-width:46px;border:0;background:transparent;font-size:17px}
+    .global-toolbar{height:34px;background:#fafafa;border-bottom:1px solid #d7d7d7;box-shadow:0 1px 3px rgba(0,0,0,.08);display:flex;align-items:stretch;padding-left:8px;position:relative;z-index:2}.tool{border:0;border-right:1px solid #ddd;border-radius:0;background:transparent;padding:0 15px;display:flex;align-items:center;gap:7px;cursor:pointer;color:#555}.tool:hover:not(:disabled){background:#e9ecee}.tool:disabled{color:#bababa;cursor:default}.ico{font-weight:700;font-size:15px}.workspace{flex:1;display:grid;grid-template-columns:minmax(430px,44%) 14px minmax(560px,56%);padding:10px 0 0 0;min-height:0;background:rgba(244,246,247,.77)}.pane{background:#fff;min-height:0;border-top:1px solid #a9b2b7;display:flex;flex-direction:column;overflow:hidden}.left-pane{margin-left:0}.splitter{position:relative;background:#f3f5f6;border-left:1px solid #ccd2d5;border-right:1px solid #ccd2d5}.splitter:before{content:"⋮";position:absolute;top:43%;left:3px;color:#8e9ba2;font-size:20px}.pane-title{height:42px;background:#a9b7bf;padding:13px 34px;font-weight:700;color:#111;text-transform:uppercase}.tabs{height:42px;display:flex;background:#a9b7bf;align-items:flex-end;padding-left:20px;gap:18px}.tab{height:42px;border:0;border-radius:0;background:transparent;padding:0 14px;border-bottom:3px solid transparent;text-transform:uppercase;color:#454545;cursor:pointer}.tab.active{font-weight:700;color:#111;border-bottom-color:#111;background:rgba(255,255,255,.09)}
+    .tab-panel{flex:1;min-height:0;display:flex;flex-direction:column}.local-toolbar{height:36px;border-bottom:1px solid #d5d5d5;display:flex;align-items:stretch;background:#fafafa}.local-tool{border:0;border-right:1px solid #e1e1e1;border-radius:0;background:transparent;padding:0 12px;display:flex;align-items:center;gap:6px;cursor:pointer}.local-tool:hover:not(:disabled){background:#eceff0}.local-tool:disabled{color:#c8c8c8}.local-spacer{flex:1}.operator-note{height:36px;display:flex;align-items:center;padding:0 11px;color:#606060;border-bottom:1px solid var(--line);background:#f7f8f8;font-size:12px}.operator-note strong{color:#111}.operator-note .formula{margin-left:auto;color:#6c7880;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:58%}
+    .grid-wrap{position:relative;flex:1;min-height:0;overflow:auto;background:#fff}.data-grid{border-collapse:collapse;min-width:100%;table-layout:fixed}.data-grid th{height:36px;background:#fff;color:#888;font-size:12px;font-weight:400;text-align:left;border-bottom:1px solid var(--line);padding:0 8px;white-space:nowrap}.data-grid td{height:33px;border-bottom:1px solid var(--line);padding:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.data-grid tbody tr.data-row:hover td{background:#f2f2f2}.data-grid tbody tr.selected td{background:var(--selected)}.data-grid tbody tr.selected td:first-child{box-shadow:inset 3px 0 #111}.checkbox{width:16px;height:16px;border:2px solid #7f7f7f;border-radius:2px;background:#fff;display:inline-block;vertical-align:middle;cursor:pointer}.checkbox.checked{background:#62737c;box-shadow:inset 0 0 0 3px #fff}.left-grid{min-width:750px}.left-grid .c-check{width:42px}.left-grid .c-num{width:52px}.left-grid .c-name{width:390px}.left-grid .c-code{width:260px}.sort{font-size:14px;color:#8c9599;margin-right:4px}
+    .record-grid{min-width:850px}.record-grid .c-select{width:38px}.record-grid .c-var{width:145px}.record-grid .c-num{width:70px}.record-grid .c-type{width:270px}.record-grid .c-sub{width:430px}.variant-head td{height:37px!important;background:#eef1f2!important;border-top:1px solid #aeb8bd;border-bottom:1px solid #c5ccd0!important;font-weight:700;color:#2e3d44}.variant-head.primary td{background:#e4eaed!important}.variant-label{display:inline-flex;align-items:center;gap:9px}.variant-badge{font-size:10px;text-transform:uppercase;border:1px solid #8d9ca4;border-radius:10px;padding:2px 7px;color:#52636c;background:#fff}.variant-actions{float:right;display:flex;gap:5px}.tiny{border:0;background:transparent;padding:2px 7px;cursor:pointer;color:#68777e}.tiny:hover{background:#dbe0e2}.logic-row td{height:22px!important;text-align:center;color:#6d7b82;font-size:11px;background:#fafafa;border-bottom:1px solid #ededed!important}.logic-line{display:flex;align-items:center;justify-content:center;gap:8px}.logic-line:before,.logic-line:after{content:"";height:1px;background:#d4d9db;width:28px}.or-row td{height:27px!important;background:#fff9df;text-align:center;color:#7b6300;font-weight:700;border-top:1px solid #ead783;border-bottom:1px solid #ead783}.empty-row td{height:58px!important;color:#999;font-style:italic;text-align:center}.selected-doc td{background:#e7e7e7}.main-checkbox{margin-left:2px}
+    .details{padding:16px 30px;max-width:650px}.detail-row{display:grid;grid-template-columns:175px 1fr;align-items:start;min-height:46px}.detail-row label{padding-top:9px;color:#666}.detail-row .value{min-height:36px;border-bottom:1px solid #d8d8d8;padding:9px 4px}.req{color:#c7433d}.hint{font-size:11px;color:#777;margin-top:2px}.users-grid{min-width:500px}.empty-tab{padding:25px;color:#777}
+    .statusbar{height:22px;border-top:1px solid #d6d6d6;background:#fafafa;display:flex;align-items:center;padding:0 8px;color:#777;font-size:11px}.statusbar span:last-child{margin-left:auto}.hidden{display:none!important}
+    dialog{border:1px solid #7c898f;border-radius:0;padding:0;width:min(720px,92vw);box-shadow:0 12px 44px rgba(0,0,0,.38)}dialog::backdrop{background:rgba(28,39,43,.44)}.modal-title{height:39px;background:#a9b7bf;display:flex;align-items:center;padding:0 14px;font-weight:700;color:#111}.modal-body{padding:16px 19px;background:#fff}.form-grid{display:grid;grid-template-columns:190px 1fr;gap:11px 13px;align-items:center}.form-grid input,.form-grid select{height:34px;border:1px solid #aeb8bd;border-radius:0;padding:5px 8px;background:#fff}.modal-actions{height:48px;border-top:1px solid #d3d3d3;background:#fafafa;display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:0 13px}.btn{border:1px solid #9aa6ac;border-radius:0;background:#fff;padding:7px 15px;cursor:pointer}.btn:hover{background:#edf0f1}.btn.primary{background:#718793;color:#fff;border-color:#627782}.message{position:fixed;right:20px;bottom:25px;background:#fff;border:1px solid #9ca8ae;border-left:5px solid #6a858f;box-shadow:0 5px 18px rgba(0,0,0,.23);padding:12px 38px 12px 13px;min-width:320px;z-index:20}.message strong{display:block}.message button{position:absolute;right:5px;top:5px;border:0;background:transparent}.confirm-text{line-height:1.5}
+    @media(max-width:1250px){.menu{padding:0 9px;font-size:14px}.workspace{grid-template-columns:minmax(390px,43%) 12px minmax(510px,57%)}.pane-title{padding-left:20px}.operator-note .formula{display:none}}
   </style>
 </head>
 <body>
-  <div class="demo-banner">Интерактивный прототип. Изменения не записываются в ГЭДК.</div>
-  <header class="topbar">
-    <div class="brand"><span class="brand-mark">Г</span>ГЭДК</div>
-    <nav class="nav" aria-label="Основное меню"><span>Поиск</span><span class="active">Справочники</span><span>Отчеты</span><span>Администрирование</span></nav>
-    <span class="grow"></span><span>?</span><span class="user">АК</span>
+<div class="app">
+  <header class="main-nav">
+    <div class="logo"><span class="logo-mark" aria-hidden="true"></span><span>ГЭДК</span></div>
+    <nav class="menus" aria-label="Главное меню">
+      <button class="menu" type="button"><span class="menu-icon">▣</span>Поиск <span class="caret">▼</span></button>
+      <button class="menu" type="button"><span class="menu-icon">▰</span>Справочники <span class="caret">▼</span></button>
+      <button class="menu" type="button"><span class="menu-icon">▥</span>Отчёты <span class="caret">▼</span></button>
+      <button class="menu" type="button"><span class="menu-icon">⚙</span>Администрирование <span class="caret">▼</span></button>
+      <button class="menu primary" type="button">Создать <span class="caret">▼</span></button>
+    </nav>
+    <span class="nav-fill"></span>
+    <div class="right-tools"><button type="button" aria-label="Помощь">?</button><button type="button" aria-label="Профиль">●⌄</button></div>
   </header>
-  <div class="layout">
-    <aside class="sidebar"><div class="side-title">Справочники</div><div class="side-item">Виды досье</div><div class="side-item">Виды документов</div><div class="side-item">Настройка импорта</div><div class="side-item active">Онлайн-продукты</div><div class="side-item">Пользователи</div></aside>
-    <main class="content">
-      <div class="breadcrumbs">Справочники / Онлайн-продукты / Редактирование</div>
-      <div class="page-head">
-        <div><h1>Онлайн-продукт</h1><p>Настройка полного состава документов для каждого способа оформления</p></div>
-        <div class="head-actions"><button type="button" id="reset">Сбросить пример</button><button type="button" class="primary" id="topSave">Сохранить</button></div>
+  <div class="global-toolbar">
+    <button class="tool" type="button" id="refreshAll"><span class="ico">↻</span>Обновить</button>
+    <button class="tool" type="button"><span class="ico">⊕</span>Добавить</button>
+    <button class="tool" type="button"><span class="ico">▥</span>Удалить</button>
+    <button class="tool" type="button" id="globalSave" disabled><span class="ico">▣</span>Сохранить</button>
+    <button class="tool" type="button" disabled><span class="ico">⚙</span>Сформировать отчёт</button>
+  </div>
+  <main class="workspace">
+    <section class="pane left-pane" aria-label="Онлайн-продукты">
+      <div class="pane-title">Онлайн-продукты</div>
+      <div class="grid-wrap" id="productScroll">
+        <table class="data-grid left-grid">
+          <thead><tr><th class="c-check"><span class="sort">↑</span><span class="checkbox"></span></th><th class="c-num">№</th><th class="c-name">Наименование</th><th class="c-code">Обозначение</th></tr></thead>
+          <tbody id="productRows"></tbody>
+        </table>
       </div>
-      <section class="product-card">
-        <div class="tabs" role="tablist"><button class="tab" type="button">Детали продукта</button><button class="tab active" type="button" aria-selected="true">Комплекты документов</button><button class="tab" type="button">Пользователи</button></div>
-        <div class="panel">
-          <div class="product-grid">
-            <div class="field"><label for="product">Наименование онлайн-продукта <span class="req">*</span></label><select id="product"><option>Открытие текущего счета и выпуск БПК</option><option>Выпуск банковской платежной карточки онлайн</option><option>Открытие текущего счета онлайн</option></select></div>
-            <div class="field"><label for="productCode">Обозначение в УОС <span class="req">*</span></label><input id="productCode" value="ACCOUNT_CARD_ONLINE"></div>
-            <div class="field"><label for="status">Статус</label><select id="status"><option>Действует</option><option>Не действует</option></select></div>
-          </div>
-          <div class="logic-hint"><span class="logic-chip">Автоматически</span><span>Все документы внутри варианта обязательны совместно. Для успешной проверки достаточно одного полного варианта.</span></div>
-          <div class="section-head"><div><h2>Варианты комплекта</h2><p>Вариант 1 является основным. Остальные варианты являются альтернативными.</p></div><button type="button" class="primary" id="addVariant">+ Добавить вариант</button></div>
-          <div id="variants"></div>
-          <div class="expression"><strong>Логика проверки</strong><div class="expression-text" id="expression"></div><div class="help">Операторы формируются автоматически и недоступны для изменения.</div></div>
-          <div class="footer-actions"><button type="button" id="cancel">Отмена</button><button type="button" class="primary" id="save">Сохранить настройки</button></div>
+      <div class="statusbar"><span id="productCount"></span><span>Записей на странице: 48</span></div>
+    </section>
+    <div class="splitter" aria-hidden="true"></div>
+    <section class="pane right-pane" aria-label="Параметры продукта">
+      <div class="tabs" role="tablist">
+        <button class="tab" type="button" data-tab="details">Детали продукта</button>
+        <button class="tab active" type="button" data-tab="kits">Комплекты документов</button>
+        <button class="tab" type="button" data-tab="users">Пользователи</button>
+      </div>
+      <section id="kitsPanel" class="tab-panel">
+        <div class="local-toolbar">
+          <button class="local-tool" type="button" id="refreshKits"><span class="ico">↻</span>Обновить</button>
+          <button class="local-tool" type="button" id="addDocument"><span class="ico">⊕</span>Добавить документ</button>
+          <button class="local-tool" type="button" id="addVariant"><span class="ico">⊕</span>Добавить вариант</button>
+          <button class="local-tool" type="button" id="deleteSelected" disabled><span class="ico">▥</span>Удалить</button>
+        </div>
+        <div class="operator-note"><span><strong>И</strong> - все документы варианта обязательны. <strong>ИЛИ</strong> - достаточно одного полного варианта.</span><span class="formula" id="formula"></span></div>
+        <div class="grid-wrap">
+          <table class="data-grid record-grid">
+            <thead><tr><th class="c-select"><span class="sort">↑</span></th><th class="c-var">Вариант комплекта *</th><th class="c-num">№ *</th><th class="c-type">Виды документов *</th><th class="c-sub">Подвиды документов *</th></tr></thead>
+            <tbody id="documentRows"></tbody>
+          </table>
+        </div>
+        <div class="statusbar"><span id="documentCount"></span><span>Порядок вариантов определяется автоматически</span></div>
+      </section>
+      <section id="detailsPanel" class="tab-panel hidden">
+        <div class="local-toolbar"><button class="local-tool" type="button"><span class="ico">↻</span>Обновить</button></div>
+        <div class="details">
+          <div class="detail-row"><label>№ <span class="req">*</span>:</label><div class="value" id="detailId"></div></div>
+          <div class="detail-row"><label>Наименование <span class="req">*</span>:</label><div class="value" id="detailName"></div></div>
+          <div class="detail-row"><label>Описание:</label><div class="value" id="detailDescription"></div></div>
+          <div class="detail-row"><label>Обозначение <span class="req">*</span>:</label><div class="value" id="detailCode"></div></div>
+          <div class="detail-row"><label>⌘ Вид досье <span class="req">*</span>:</label><div><div class="value" id="detailDossier"></div><div class="hint">наберите минимум 3 символа для фильтрации списка</div></div></div>
         </div>
       </section>
-    </main>
-  </div>
-  <dialog id="deleteDialog"><div class="dialog-head"><h2>Удалить вариант?</h2></div><div class="dialog-body"><p id="deleteText"></p><p>Оставшиеся варианты будут перенумерованы без пропусков.</p></div><div class="dialog-actions"><button type="button" id="keepVariant">Отмена</button><button type="button" class="danger" id="confirmDelete">Удалить</button></div></dialog>
-  <div class="toast hidden" id="toast" role="status"><button type="button" id="closeToast" aria-label="Закрыть">×</button><strong id="toastTitle">Настройки сохранены</strong><span id="toastText">Новые запуски проверки будут использовать текущие варианты.</span></div>
-  <script>
-  (()=>{
-    "use strict";
-    const dossierOptions=["Текущий счет","БПК"];
-    const docOptions=["Договор на открытие счета","Чек","Заявление на выпуск БПК и открытие счета","Заявление на получение БПК","Открытие счета с выдачей БПК"];
-    const subtypeMap={"Договор на открытие счета":"1","Чек":"2","Заявление на выпуск БПК и открытие счета":"1","Заявление на получение БПК":"2","Открытие счета с выдачей БПК":"3"};
-    const initial=()=>[
-      {docs:[{dossier:"Текущий счет",doc:"Договор на открытие счета",subtype:"1",attrs:"product_code:{CB}"},{dossier:"Текущий счет",doc:"Чек",subtype:"2",attrs:"product_code:{CB}"}]},
-      {docs:[{dossier:"БПК",doc:"Заявление на выпуск БПК и открытие счета",subtype:"1",attrs:"product_code:{CARD}"},{dossier:"Текущий счет",doc:"Чек",subtype:"2",attrs:"product_code:{CB}"}]}
-    ];
-    let variants=initial(),pendingDelete=null,toastTimer=null;
-    const el=id=>document.getElementById(id);
-    const escape=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
-    const opts=(items,value)=>items.map(x=>`<option${x===value?" selected":""}>${escape(x)}</option>`).join("");
-    function render(){
-      el("variants").innerHTML=variants.map((variant,vIndex)=>{
-        const rows=variant.docs.map((d,dIndex)=>`${dIndex?`<tr class="and-row"><td colspan="6"><span class="and-pill">И</span></td></tr>`:""}<tr class="doc-row">
-          <td class="doc-index">${dIndex+1}</td>
-          <td><select aria-label="Вид досье" data-field="dossier" data-v="${vIndex}" data-d="${dIndex}">${opts(dossierOptions,d.dossier)}</select></td>
-          <td><select aria-label="Вид документа" data-field="doc" data-v="${vIndex}" data-d="${dIndex}">${opts(docOptions,d.doc)}</select></td>
-          <td><input aria-label="Подвид документа" data-field="subtype" data-v="${vIndex}" data-d="${dIndex}" value="${escape(d.subtype)}"></td>
-          <td><input aria-label="Атрибуты связки" data-field="attrs" data-v="${vIndex}" data-d="${dIndex}" value="${escape(d.attrs)}"></td>
-          <td class="row-action"><button type="button" class="icon danger remove-doc" data-v="${vIndex}" data-d="${dIndex}" aria-label="Удалить документ">×</button></td>
-        </tr>`).join("");
-        return `${vIndex?`<div class="or-divider"><span class="or-pill">ИЛИ</span></div>`:""}<article class="variant" data-variant="${vIndex}">
-          <div class="variant-head"><span class="variant-number">Вариант ${vIndex+1}</span><span class="badge${vIndex?" alt":""}">${vIndex?"Альтернативный":"Основной"}</span><span class="variant-note">${variant.docs.length} ${variant.docs.length===1?"документ":"документа"}</span><div class="variant-actions"><button type="button" class="danger remove-variant" data-v="${vIndex}" ${variants.length===1?"disabled":""}>Удалить вариант</button></div></div>
-          <div class="error-message hidden">Добавьте хотя бы один полностью заполненный документ.</div>
-          <table class="doc-table"><thead><tr><th>№</th><th>Вид досье</th><th>Вид документа</th><th>Подвид</th><th>Атрибуты связки</th><th></th></tr></thead><tbody>${rows||`<tr><td colspan="6" class="help" style="padding:16px">В варианте пока нет документов.</td></tr>`}</tbody></table>
-          <div class="variant-footer"><button type="button" class="add-doc" data-v="${vIndex}">+ Добавить документ</button></div>
-        </article>`;
-      }).join("");
-      el("expression").innerHTML=variants.map((v,i)=>`<b>(</b>${v.docs.length?v.docs.map(d=>escape(d.doc)).join(" <b>И</b> "):"документы не добавлены"}<b>)</b>`).join(" <b>ИЛИ</b> ");
-      bindDynamic();
-    }
-    function bindDynamic(){
-      document.querySelectorAll("[data-field]").forEach(control=>control.addEventListener("change",()=>{
-        const v=Number(control.dataset.v),d=Number(control.dataset.d),field=control.dataset.field;
-        variants[v].docs[d][field]=control.value;
-        if(field==="doc"){variants[v].docs[d].subtype=subtypeMap[control.value]||"";render();}else updateExpression();
-      }));
-      document.querySelectorAll(".add-doc").forEach(button=>button.addEventListener("click",()=>{variants[Number(button.dataset.v)].docs.push({dossier:"Текущий счет",doc:"Чек",subtype:"2",attrs:"product_code:{}"});render();}));
-      document.querySelectorAll(".remove-doc").forEach(button=>button.addEventListener("click",()=>{variants[Number(button.dataset.v)].docs.splice(Number(button.dataset.d),1);render();}));
-      document.querySelectorAll(".remove-variant").forEach(button=>button.addEventListener("click",()=>openDelete(Number(button.dataset.v))));
-    }
-    function updateExpression(){el("expression").innerHTML=variants.map(v=>`<b>(</b>${v.docs.length?v.docs.map(d=>escape(d.doc)).join(" <b>И</b> "):"документы не добавлены"}<b>)</b>`).join(" <b>ИЛИ</b> ");}
-    function openDelete(index){if(variants.length===1)return;pendingDelete=index;el("deleteText").textContent=`Будет удален вариант ${index+1} со всеми входящими документами.`;el("deleteDialog").showModal();}
-    function validate(){let ok=true;document.querySelectorAll(".variant").forEach(x=>{x.classList.remove("error");x.querySelector(".error-message").classList.add("hidden")});variants.forEach((v,i)=>{const valid=v.docs.length>0&&v.docs.every(d=>d.dossier&&d.doc&&d.subtype.trim()&&d.attrs.trim());if(!valid){ok=false;const card=document.querySelector(`[data-variant="${i}"]`);card.classList.add("error");card.querySelector(".error-message").classList.remove("hidden");}});return ok;}
-    function showToast(ok=true){clearTimeout(toastTimer);el("toastTitle").textContent=ok?"Настройки сохранены":"Настройка не сохранена";el("toastText").textContent=ok?"Новые и повторные запуски будут использовать текущие варианты.":"Заполните документы в отмеченных вариантах.";el("toast").style.borderLeftColor=ok?"var(--green)":"var(--red)";el("toastTitle").style.color=ok?"var(--green)":"var(--red)";el("toast").classList.remove("hidden");toastTimer=setTimeout(()=>el("toast").classList.add("hidden"),5000);}
-    function save(){const ok=validate();showToast(ok);if(!ok)document.querySelector(".variant.error").scrollIntoView({behavior:"smooth",block:"center"});}
-    el("addVariant").addEventListener("click",()=>{variants.push({docs:[{dossier:"Текущий счет",doc:"Чек",subtype:"2",attrs:"product_code:{}"}]});render();document.querySelector(`[data-variant="${variants.length-1}"]`).scrollIntoView({behavior:"smooth",block:"center"});});
-    el("keepVariant").addEventListener("click",()=>{pendingDelete=null;el("deleteDialog").close()});
-    el("confirmDelete").addEventListener("click",()=>{if(pendingDelete!==null&&variants.length>1)variants.splice(pendingDelete,1);pendingDelete=null;el("deleteDialog").close();render();showToast(true);el("toastTitle").textContent="Вариант удален";el("toastText").textContent="Оставшиеся варианты перенумерованы без пропусков.";});
-    el("deleteDialog").addEventListener("cancel",()=>{pendingDelete=null});
-    el("save").addEventListener("click",save);el("topSave").addEventListener("click",save);
-    el("closeToast").addEventListener("click",()=>el("toast").classList.add("hidden"));
-    el("reset").addEventListener("click",()=>{variants=initial();render();showToast(true);el("toastTitle").textContent="Пример восстановлен";el("toastText").textContent="Возвращены два исходных варианта.";});
-    el("cancel").addEventListener("click",()=>{variants=initial();render();});
-    render();
-  })();
-  </script>
+      <section id="usersPanel" class="tab-panel hidden">
+        <div class="local-toolbar"><button class="local-tool" type="button"><span class="ico">↻</span>Обновить</button><button class="local-tool" type="button"><span class="ico">⊕</span>Добавить</button><button class="local-tool" type="button" disabled><span class="ico">▥</span>Удалить</button></div>
+        <div class="grid-wrap"><table class="data-grid users-grid"><thead><tr><th>№</th><th>Пользователь</th></tr></thead><tbody><tr class="empty-row"><td colspan="2">Пользователи для демонстрационного продукта не добавлены</td></tr></tbody></table></div>
+      </section>
+    </section>
+  </main>
+</div>
+
+<dialog id="documentDialog">
+  <div class="modal-title">Добавление документа в комплект</div>
+  <form id="documentForm">
+    <div class="modal-body"><div class="form-grid">
+      <label for="variantSelect">Вариант комплекта <span class="req">*</span></label><select id="variantSelect"></select>
+      <label for="documentNumber">№ <span class="req">*</span></label><input id="documentNumber" inputmode="numeric" required>
+      <label for="documentType">Вид документа <span class="req">*</span></label><select id="documentType"><option>Получение БПК (ФЛ)</option><option>Открытие банковского счета (ФЛ)</option><option>Открытие счета с выдачей БПК</option></select>
+      <label for="documentSubtype">Подвид документа <span class="req">*</span></label><select id="documentSubtype"><option>Заявление на получение личной дебетовой БПК</option><option>Чек, подтверждающий успешное завершение операции</option><option>Заявление на открытие ТС и получение личной дебетовой БПК</option><option>Договор на открытие текущего счета</option></select>
+    </div></div>
+    <div class="modal-actions"><button class="btn" type="button" id="cancelDocument">Отмена</button><button class="btn primary" type="submit">Добавить</button></div>
+  </form>
+</dialog>
+
+<dialog id="confirmDialog">
+  <div class="modal-title" id="confirmTitle">Подтверждение</div>
+  <div class="modal-body confirm-text" id="confirmText"></div>
+  <div class="modal-actions"><button class="btn" type="button" id="cancelConfirm">Отмена</button><button class="btn primary" type="button" id="acceptConfirm">Продолжить</button></div>
+</dialog>
+
+<div class="message hidden" id="message" role="status"><button type="button" id="closeMessage">×</button><strong id="messageTitle"></strong><span id="messageText"></span></div>
+
+<script>
+(()=>{
+  "use strict";
+  const products=[
+    [4,"Онлайн-открытие банковского счета","B3","Базовый счет Пенсионный","Текущий счет"],[5,"Онлайн-открытие банковского счета с выпуском карты","BC","Яркая кредитка","Текущий счет"],[6,"Онлайн-открытие банковского счета","CB","A/C Individual","Текущий счет"],[7,"Онлайн-открытие банковского счета","B0","Базовый счет","Текущий счет"],[8,"Онлайн-открытие банковского счета","CE","A/C Individual","Текущий счет"],[9,"Онлайн-депозиты","ВИК","Депозит ФЛ Интернет-вклад фикс","Вклад (депозит)"],[10,"Онлайн-депозиты","ВИЗ","Депозит ФЛ Зручны анлайн фиксирован.","Вклад (депозит)"],[11,"Онлайн-депозиты","ВИО","Депозит ФЛ Интернет-вклад отзывной","Вклад (депозит)"],[20,"Выпуск банковской платежной карточки онлайн","PrvDbAAA027VIRT_TMC","Виртуальная карта","БПК"],[30,"Выпуск банковской платежной карточки онлайн","PrvDbAAA050PSPROSTO_TMC","ПУ Всё просто","БПК"],[31,"Выпуск банковской платежной карточки онлайн","PrvDbAAA051PSMAXFA_TMC","ПУ Всё по максимуму","БПК"],[32,"Выпуск банковской платежной карточки онлайн","PrvDbAAA051PSOPTIMAL_TMC","ПУ Всё оптимально","БПК"],[33,"Выпуск банковской платежной карточки онлайн","PrvDbAAA051PSPREMIUM_TMC","ПУ Всё по максимуму online","БПК"],[34,"Выпуск банковской платежной карточки онлайн","PrvDbAAA047PSMAX_TMC","ПУ Всё по максимуму","БПК"],[35,"Выпуск банковской платежной карточки онлайн","PrvDbAAA047PSMAXB_TMC","ПУ Всё по максимуму","БПК"],[36,"Выпуск банковской платежной карточки онлайн","PrvDbAAA047PSPREM_TMC","ПУ Всё по максимуму online","БПК"],[37,"Выпуск банковской платежной карточки онлайн","PrvDbAAA047PSPREMB_TMC","ПУ Всё по максимуму online","БПК"],[38,"Выпуск банковской платежной карточки онлайн","PrvDbAAA027PSBASEBFIB_TMC","ПУ Базовый","БПК"],[39,"Выпуск банковской платежной карточки онлайн","PrvDbAAA052SHINEIB_TMC","Карта Сияй","БПК"],[41,"Пакеты услуг физических лиц","50","ПУ Всё","Пакет услуг"],[42,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA027GRNOVERIB_TMC","Зеленая карта","Текущий счет"],[43,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA027ORNGOVERIB_TMC","Оранжевая карта","Текущий счет"],[44,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA027PINKOVERIB_TMC","Розовая карта","Текущий счет"],[45,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA027YELOVERIB_TMC","Желтая карта","Текущий счет"],[46,"Онлайн-открытие банковского счета с выпуском карты","CB","A/C Individual","Текущий счет"],[47,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA050PSPROSTO_TMC","ПУ Всё просто","БПК"],[48,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA051PSMAXFA_TMC","ПУ Всё по максимуму","БПК"],[49,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA051PSOPTIMAL_TMC","ПУ Всё оптимально","БПК"],[50,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA051PSPREMIUM_TMC","ПУ Всё по максимуму online","БПК"],[51,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA047PSMAX_TMC","ПУ Всё по максимуму","БПК"],[52,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA047PSMAXB_TMC","ПУ Всё по максимуму","БПК"],[53,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA047PSPREM_TMC","ПУ Всё по максимуму online","БПК"],[54,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA047PSPREMB_TMC","ПУ Всё по максимуму online","БПК"],[55,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA027PSBASEBFIB_TMC","ПУ Базовый","БПК"],[56,"Онлайн-открытие банковского счета с выпуском карты","CE","A/C Individual","Текущий счет"],[57,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA052SHINEIB_TMC","Карта Сияй","БПК"],[58,"Онлайн-открытие банковского счета с выпуском карты","B0","Базовый счет","Текущий счет"],[59,"Онлайн-открытие банковского счета с выпуском карты","B3","Базовый счет Пенсионный","Текущий счет"],[60,"Онлайн-открытие банковского счета с выпуском виртуальной карты","CB","A/C Individual","Текущий счет"],[61,"Онлайн-открытие банковского счета с выпуском виртуальной карты","CE","A/C Individual","Текущий счет"],[62,"Онлайн-открытие банковского счета с выпуском виртуальной карты","B0","Базовый счет","Текущий счет"],[63,"Онлайн-открытие банковского счета с выпуском виртуальной карты","B3","Базовый счет Пенсионный","Текущий счет"],[64,"Онлайн-открытие банковского счета с выпуском виртуальной карты","PrvDbAAA027VIRT_TMC","Виртуальная карта","БПК"],[65,"Выпуск банковской платежной карточки онлайн","PrvDbAAA027PSBASEIB_TMC","ПУ Базовый","БПК"],[66,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA027PSBASEBFIB_TMC","ПУ Базовый","БПК"],[67,"Онлайн-открытие банковского счета с выпуском карты","PrvDbAAA027PSBASEIB_TMC","ПУ Базовый","БПК"],[68,"Онлайн-открытие ОМС","MF","Обезличенный металлический счет","ОМС"],[71,"Пакеты услуг физических лиц","51","ПУ Базовый","Пакет услуг"]
+  ];
+  const initialVariants=()=>[
+    {docs:[{id:222,type:"Получение БПК (ФЛ)",subtype:"Заявление на получение личной дебетовой БПК"},{id:223,type:"Получение БПК (ФЛ)",subtype:"Чек, подтверждающий успешное завершение операции (факт приема Банком к исполнению заявления на получение личной дебетовой БПК)"}]},
+    {docs:[{id:224,type:"Открытие счета с выдачей БПК",subtype:"Заявление на открытие ТС и получение личной дебетовой БПК"},{id:225,type:"Получение БПК (ФЛ)",subtype:"Чек, подтверждающий успешное завершение операции"}]}
+  ];
+  let selectedProductId=34,variants=initialVariants(),selectedDoc=null,pendingAction=null,messageTimer=null;
+  const $=id=>document.getElementById(id);const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+  const currentProduct=()=>products.find(p=>p[0]===selectedProductId)||products[0];
+  function renderProducts(){
+    $("productRows").innerHTML=products.map(p=>`<tr class="data-row${p[0]===selectedProductId?" selected":""}" data-product="${p[0]}"><td><span class="checkbox main-checkbox"></span></td><td>${p[0]}</td><td title="${esc(p[1])}">${esc(p[1])}</td><td title="${esc(p[2])}">${esc(p[2])}</td></tr>`).join("");
+    $("productCount").textContent=`Показано ${products.length} записей`;
+    document.querySelectorAll("[data-product]").forEach(row=>row.addEventListener("click",()=>{selectedProductId=Number(row.dataset.product);selectedDoc=null;renderProducts();renderDetails();renderDocuments();}));
+  }
+  function renderDetails(){const p=currentProduct();$("detailId").textContent=p[0];$("detailName").textContent=p[1];$("detailDescription").textContent=p[3];$("detailCode").textContent=p[2];$("detailDossier").textContent=p[4];}
+  function renderDocuments(){
+    let html="";variants.forEach((v,vi)=>{
+      if(vi)html+=`<tr class="or-row"><td colspan="5">ИЛИ</td></tr>`;
+      html+=`<tr class="variant-head${vi===0?" primary":""}"><td colspan="5"><span class="variant-label">Вариант ${vi+1}<span class="variant-badge">${vi===0?"Основной":"Альтернативный"}</span></span><span class="variant-actions"><button class="tiny add-to-variant" data-v="${vi}" type="button">⊕ документ</button><button class="tiny remove-variant" data-v="${vi}" type="button" ${variants.length===1?"disabled":""}>▥ удалить вариант</button></span></td></tr>`;
+      if(!v.docs.length)html+=`<tr class="empty-row"><td colspan="5">Добавьте хотя бы один документ</td></tr>`;
+      v.docs.forEach((d,di)=>{if(di)html+=`<tr class="logic-row"><td colspan="5"><span class="logic-line">И</span></td></tr>`;const selected=selectedDoc&&selectedDoc.v===vi&&selectedDoc.d===di;html+=`<tr class="data-row${selected?" selected-doc":""}" data-doc-v="${vi}" data-doc-d="${di}"><td><span class="checkbox${selected?" checked":""}"></span></td><td>Вариант ${vi+1}</td><td>${d.id}</td><td title="${esc(d.type)}">${esc(d.type)}</td><td title="${esc(d.subtype)}">${esc(d.subtype)}</td></tr>`;});
+    });
+    $("documentRows").innerHTML=html;const count=variants.reduce((n,v)=>n+v.docs.length,0);$("documentCount").textContent=`Вариантов: ${variants.length}. Документов: ${count}`;
+    $("formula").textContent=variants.map((v,i)=>`В${i+1}: ${v.docs.length} док.`).join(" ИЛИ ");
+    document.querySelectorAll("[data-doc-v]").forEach(row=>row.addEventListener("click",()=>{selectedDoc={v:Number(row.dataset.docV),d:Number(row.dataset.docD)};renderDocuments();}));
+    document.querySelectorAll(".add-to-variant").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();openDocument(Number(b.dataset.v));}));
+    document.querySelectorAll(".remove-variant").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();if(variants.length>1)confirmRemoveVariant(Number(b.dataset.v));}));
+    $("deleteSelected").disabled=!selectedDoc;
+  }
+  function setTab(name){document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.tab===name));["details","kits","users"].forEach(x=>$(x+"Panel").classList.toggle("hidden",x!==name));}
+  function markDirty(){$("globalSave").disabled=false;}
+  function fillVariantSelect(selected){$("variantSelect").innerHTML=variants.map((v,i)=>`<option value="${i}"${i===selected?" selected":""}>Вариант ${i+1} - ${i===0?"Основной":"Альтернативный"}</option>`).join("");}
+  function openDocument(v=0){fillVariantSelect(v);$("documentNumber").value=Math.max(0,...variants.flatMap(x=>x.docs.map(d=>d.id)))+1;$("documentDialog").showModal();}
+  function confirmRemoveVariant(index){pendingAction=()=>{variants.splice(index,1);selectedDoc=null;renderDocuments();markDirty();notify("Вариант удален","Оставшиеся варианты перенумерованы без пропусков.");};$("confirmTitle").textContent="Удаление варианта";$("confirmText").innerHTML=`Удалить вариант ${index+1} со всеми входящими документами?<br><br>Оставшиеся варианты будут перенумерованы автоматически.`;$("confirmDialog").showModal();}
+  function notify(title,text){clearTimeout(messageTimer);$("messageTitle").textContent=title;$("messageText").textContent=text;$("message").classList.remove("hidden");messageTimer=setTimeout(()=>$("message").classList.add("hidden"),4500);}
+  document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>setTab(t.dataset.tab)));
+  $("addDocument").addEventListener("click",()=>openDocument(0));
+  $("addVariant").addEventListener("click",()=>{variants.push({docs:[]});selectedDoc=null;renderDocuments();markDirty();notify("Вариант добавлен",`Создан вариант ${variants.length}. Добавьте в него полный комплект документов.`);});
+  $("deleteSelected").addEventListener("click",()=>{if(!selectedDoc)return;pendingAction=()=>{variants[selectedDoc.v].docs.splice(selectedDoc.d,1);selectedDoc=null;renderDocuments();markDirty();notify("Документ удален","Состав варианта изменен.");};$("confirmTitle").textContent="Удаление документа";$("confirmText").textContent="Удалить выбранный документ из варианта комплекта?";$("confirmDialog").showModal();});
+  $("documentForm").addEventListener("submit",e=>{e.preventDefault();const v=Number($("variantSelect").value);variants[v].docs.push({id:Number($("documentNumber").value),type:$("documentType").value,subtype:$("documentSubtype").value});$("documentDialog").close();renderDocuments();markDirty();notify("Документ добавлен",`Документ включен в вариант ${v+1}.`);});
+  $("cancelDocument").addEventListener("click",()=>$("documentDialog").close());$("cancelConfirm").addEventListener("click",()=>{pendingAction=null;$("confirmDialog").close();});$("acceptConfirm").addEventListener("click",()=>{const a=pendingAction;pendingAction=null;$("confirmDialog").close();if(a)a();});
+  $("globalSave").addEventListener("click",()=>{if(variants.some(v=>!v.docs.length)){notify("Настройки не сохранены","Каждый вариант должен содержать полный комплект документов.");return;}$("globalSave").disabled=true;notify("Настройки сохранены","Новые и повторные проверки будут использовать текущий порядок вариантов.");});
+  $("refreshAll").addEventListener("click",()=>{variants=initialVariants();selectedDoc=null;renderDocuments();$("globalSave").disabled=true;notify("Данные обновлены","Восстановлен исходный демонстрационный состав.");});$("refreshKits").addEventListener("click",()=>{variants=initialVariants();selectedDoc=null;renderDocuments();$("globalSave").disabled=true;});
+  $("closeMessage").addEventListener("click",()=>$("message").classList.add("hidden"));
+  renderProducts();renderDetails();renderDocuments();setTimeout(()=>{const row=document.querySelector('[data-product="34"]');if(row)row.scrollIntoView({block:"center"});},50);
+})();
+</script>
 </body>
 </html>
